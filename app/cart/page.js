@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion';
@@ -129,7 +130,7 @@ const CartPage = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <div className="bg-slate-200 p-4 rounded-md w-[100%] border border-gray-300">
-                    <img
+                    <Image
                       src={product.images[0]}
                       alt={product.name}
                       width={300}

@@ -111,7 +111,7 @@ export default function Home() {
             transition={{ duration: 1 }}
           >
             <div className="bg-slate-200 p-4 rounded-md w-[100%]">
-              <img
+              <Image
                 src={product.images[0]}
                 alt={product.name}
                 width={300}

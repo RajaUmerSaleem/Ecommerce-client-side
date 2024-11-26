@@ -1,4 +1,5 @@
 "use client"
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -36,16 +37,19 @@ export default function ViewProduct() {
 
   return (
     <>
-      <ToastContainer />
-      <button onClick={() => window.location.href = '/'} className="m-2 bg-red-500 text-white rounded-md w-[50px]">Back</button>
-      <div className="flex justify-center items-center h-[85vh] p-4">
-        <div className="bg-yellow-300 shadow-md rounded-lg p-6 max-w-sm">
-          <img src={product.images[0]} alt={product.name} className="w-full h-48 object-cover rounded-md mb-4" />          <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
-          <p className="text-gray-700 mb-4">{product.description}</p>
-          <p className="text-lg font-semibold">Price: ${product.price}</p>
-          <button onClick={() => handleAddToCart(product)} className="m-2 bg-green-500 text-white rounded-md w-full">Add to Cart</button>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ToastContainer />
+        <button onClick={() => window.location.href = '/'} className="m-2 bg-red-500 text-white rounded-md w-[50px]">Back</button>
+        <div className="flex justify-center items-center h-[85vh] p-4">
+          <div className="bg-yellow-300 shadow-md rounded-lg p-6 max-w-sm">
+            <Image src={product.images[0]} alt={product.name} className="w-full h-48 object-cover rounded-md mb-4" />
+            <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
+            <p className="text-gray-700 mb-4">{product.description}</p>
+            <p className="text-lg font-semibold">Price: ${product.price}</p>
+            <button onClick={() => handleAddToCart(product)} className="m-2 bg-green-500 text-white rounded-md w-full">Add to Cart</button>
+          </div>
         </div>
-      </div>
+      </Suspense>
     </>
   );
 }
