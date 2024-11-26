@@ -89,7 +89,7 @@ const CartPage = () => {
     };
     try {
       const response = await axios.post('/api/orders', orderData);
-      if (response.data.success) {
+      if (response.status === 201) {
         toast.success('Order placed successfully!');
         setCart([]);
         localStorage.removeItem('cart');
